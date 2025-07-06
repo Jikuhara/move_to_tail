@@ -6,7 +6,7 @@
 /*   By: kei2003730 <kei2003730@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 14:37:08 by kei2003730        #+#    #+#             */
-/*   Updated: 2025/07/06 14:54:25 by kei2003730       ###   ########.fr       */
+/*   Updated: 2025/07/06 14:56:08 by kei2003730       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,39 @@ void swap(int *a, int *b)
     *b = *a;
 }
 
-void move_to_tail(int tab[], int size, int i)
+void move_to_tail(int nums[], int size, int i)
 {
     while (i < size - 1)
     {
-        swap(&tab[i], &tab[i + 1]);
+        swap(&nums[i], &nums[i + 1]);
         i++;
     }
 }
 
-void move_zero_to_tail(int tab[], int size)
+int move_zero_to_tail(int nums[], int size)
 {
     int i = 0;
+    int count = 0;
     while (i < size)
     {
-        if (tab[i] == 0)
+        if (nums[i] == 0)
         {
-            move_to_tail(tab, size, i);
+            move_to_tail(nums, size, i);
+            count++;
         }
         i++;
     }
+    return (count);
 }
 
 int main(void)
 {
-    int tab[] = {0, 3, 1, 0};
+    int nums[] = {0, 3, 1, 0};
     int size = 4;
-    move_zero_to_tail(tab, size);
+    move_zero_to_tail(nums, size);
     for (int i = 0; i < size; i++)
     {
-        printf("tab[%i] = %i\n", i, tab[i]);
+        printf("nums[%i] = %i\n", i, nums[i]);
     }
     return (0);
 }
